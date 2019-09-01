@@ -31,7 +31,7 @@ $(document).ready(function(){
   function get_achievement(){
     // ここに、ランクの値の文字列（平均点が80点以上なら"A"、60点以上なら"B"、40点以上なら"C"、それ以下なら"D"）を出力する処理を書き込む
 
-      let average=score_indicate();
+      let average=Number($("#average_indicate").text());
 
       switch(true){
         case(average>=80):
@@ -45,9 +45,9 @@ $(document).ready(function(){
         break;
         default:
         return $("#evaluation").text("D");
-      };
+      }
 
-  };
+  }
 
 //-----
   function get_pass_or_failure(){
@@ -71,14 +71,13 @@ $(document).ready(function(){
   };
 //----
 
-
-
-
   function judgement(){
     // ここに、「最終ジャッジ」のボタンを押したら「あなたの成績はAです。合格です」といった内容を出力する処理を書き込む
     // 下記の記述をすることで、「最終ジャッジ」のボタンを押すと「あなたの成績は（ここに「ランク」の値を入れる）です。（ここに「判定」の値を入れる）です」という文字の入った水色のフキダシが出力される処理が実装される。
     let getachievement=$("#evaluation").text();
     let passorfailure =$("#judge").text();
+    $("#alert-indicate").remove();
+
     //⑦#decration要素にappend以下の()引数で指定したコンテンツを追加する
     $('#declaration').append(`<label id="alert-indicate" class="alert alert-info">あなたの成績は${getachievement}です。${passorfailure}です</label>`);
     };
